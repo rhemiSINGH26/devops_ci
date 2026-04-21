@@ -6,7 +6,7 @@ on:
 
 jobs: 
   build-push:
-    runs-on:  
+    runs-on: ubuntu-latest  
       steps:
         - name: checkout code
           uses: actions/checkout@v3
@@ -18,7 +18,7 @@ jobs:
               password: ${{ secrets.DOCKER_PASSWORD }}
 
         - name: Docker build image
-          run: docker push -t ${{ secrets.DOCKER_USERNAME }}/python-app:latest
+          run: docker build -t ${{ secrets.DOCKER_USERNAME }}/python-app:latest
 
         - name: Docker push to dockerhub
           run: docker push ${{ secrets.DOCKER_USERNAME }}/python-app:latest
